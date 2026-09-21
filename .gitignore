@@ -1,0 +1,14 @@
+# Env / secrets — never commit real values
+.env
+.env.local
+*.local
+
+# Build output
+/bin/
+/tmp/
+/server
+
+# Go
+*.test
+*.out
+coverage.*
