@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "neoapps": {
+      "type": "http",
+      "url": "https://cloud.neoapps.ai/mcp"
+    }
+  }
+}
