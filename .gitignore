@@ -12,3 +12,8 @@
 *.test
 *.out
 coverage.*
+
+# Jev
+jev/.venv/
+jev/*.sonuc.csv
+__pycache__/

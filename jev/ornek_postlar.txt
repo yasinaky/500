@@ -1,0 +1,9 @@
+Bu hafta otomasyonla ilk müşterimi kazandım, 35.000 TL'lik bir anlaşma! Topluluğa çok teşekkürler.
+
+Claude Code kurulumunda "command not found" hatası alıyorum, PATH'e ekledim ama hâlâ çalışmıyor. Yardım eder misiniz?
+
+Yaklaşık 5 aydır buradayım, artık tam zamanlı kendi işimdeyim. Herkese teşekkür ederim.
+
+Yarın akşam 20:00'de n8n ile e-posta otomasyonu canlı yayını yapıyoruz, herkes davetli.
+
+Reklam kampanyam bir haftadır hiç dönüşüm getirmiyor, hangi metrikleri kontrol etmeliyim?
