@@ -59,6 +59,27 @@ free Supabase project; any Postgres works for the API itself.
 > The `dev-token` helper signs with your `SUPABASE_JWT_SECRET` for local
 > testing. In production, tokens come from Supabase Auth after a real sign-in.
 
+## Web UI
+
+The Go binary also serves a single-page frontend (embedded, no separate build
+step) at `/`: a sign-in screen and a projects dashboard that talks to the same
+API. Two auth modes:
+
+- **Supabase Auth** (production): set `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+  The login form signs in with email/password; the resulting access token is
+  sent as a Bearer header to the API. The anon key is a public client key and
+  is the only config exposed to the browser (`GET /config.json`) — the JWT
+  secret never leaves the server.
+- **Dev sign-in** (local only): set `DEV_AUTH=true`. The login screen then
+  offers a tenant picker and `POST /dev/login` mints a token so you can click
+  through the UI without a Supabase project. **Never enable `DEV_AUTH` in
+  production.**
+
+```bash
+DATABASE_URL=... SUPABASE_JWT_SECRET=... DEV_AUTH=true make run
+# open http://localhost:8080 — pick Acme or Globex, create/delete projects
+```
+
 ## API
 
 All `/api/*` routes require `Authorization: Bearer <supabase-access-token>`.

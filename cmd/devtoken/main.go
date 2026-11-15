@@ -15,7 +15,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/golang-jwt/jwt/v5"
+	"github.com/yasinaky/500/internal/auth"
 )
 
 func main() {
@@ -31,15 +31,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	tok := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"sub":    *user,
-		"org_id": *org,
-		"email":  *user + "@example.com",
-		"aud":    *aud,
-		"iat":    time.Now().Unix(),
-		"exp":    time.Now().Add(*ttl).Unix(),
-	})
-	s, err := tok.SignedString([]byte(secret))
+	s, err := auth.Mint(secret, *user, *org, *aud, *ttl)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "sign:", err)
 		os.Exit(1)

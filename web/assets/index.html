@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · 500</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <noscript>This app needs JavaScript.</noscript>
+
+  <!-- Login -->
+  <main id="login" class="auth" hidden>
+    <div class="auth-card">
+      <div class="brand"><span class="logo">5</span><span class="brand-name">Projects</span></div>
+      <p class="auth-sub">Multi-tenant console · Go + Supabase</p>
+
+      <form id="supaForm" hidden>
+        <label>Email<input id="email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+
+      <form id="devForm" hidden>
+        <p class="dev-note">Developer sign-in (no Supabase configured). Pick a tenant:</p>
+        <div class="org-choices">
+          <button class="chip" type="button" data-org="00000000-0000-0000-0000-000000000001">Acme Inc · 0001</button>
+          <button class="chip" type="button" data-org="00000000-0000-0000-0000-000000000002">Globex · 0002</button>
+        </div>
+        <label>org_id<input id="devOrg" value="00000000-0000-0000-0000-000000000001" required></label>
+        <label>user id<input id="devUser" value="dev-user"></label>
+        <button class="btn" type="submit">Enter console</button>
+      </form>
+
+      <p id="authError" class="error" role="alert" hidden></p>
+    </div>
+  </main>
+
+  <!-- App -->
+  <div id="app" class="app" hidden>
+    <aside class="rail">
+      <div class="brand"><span class="logo">5</span><span class="brand-name">Projects</span></div>
+      <div class="identity">
+        <div class="rail-label">Signed in</div>
+        <div class="id-row"><span class="k">user</span><span id="idUser" class="v mono"></span></div>
+        <div class="id-row"><span class="k">org_id</span><span id="idOrg" class="v mono"></span></div>
+      </div>
+      <button id="logout" class="btn ghost" type="button">Sign out</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h1>Projects</h1>
+        <span id="scopePill" class="pill"></span>
+      </header>
+
+      <form id="createForm" class="create">
+        <input id="projName" placeholder="New project name…" maxlength="80" autocomplete="off" aria-label="New project name">
+        <button class="btn" type="submit">Create</button>
+      </form>
+
+      <section id="list" class="list" aria-live="polite"></section>
+      <p id="appError" class="error" role="alert" hidden></p>
+    </main>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="assertive"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.8/dist/umd/supabase.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

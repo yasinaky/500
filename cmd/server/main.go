@@ -52,7 +52,7 @@ func run(logger *slog.Logger) error {
 
 	verifier := auth.NewVerifier(cfg.JWTSecret, cfg.JWTAudience)
 	store := projects.NewPostgresStore(pool)
-	handler := server.New(verifier, store)
+	handler := server.New(cfg, verifier, store, logger)
 
 	srv := &http.Server{
 		Addr:              ":" + cfg.Port,
